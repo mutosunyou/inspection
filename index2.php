@@ -82,86 +82,44 @@ $body.='<h2 class="toptitle">';
 $body.='点検結果';
 $body.='</h2><hr />';
 
-//フォーム=========================================
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">カテゴリ</span>';
-$body.='<select class="form-control" id="element">';
-$rst=selectData(DB_NAME,'select * from element');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['content'].'">'.$rst[$i]['content'].' </option>';
+////////////////////////////////////////////////////////////
+$body.='<div style="float:left;background:silver;">';
+$rst_category=selectData(DB_NAME,'select * from element');
+//$body.='<h5>カテゴリー</h5>';
+$body.='<select id="categ" multiple class="form-control form-inline">';
+for($i=0;$i<count($rst_category);$i++){
+  $body.='<option value="'.$rst_category[$i]['id'].'">'.$rst_category[$i]['content'].'</option>';
 }
 $body.='</select>';
 $body.='</div>';
 
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">部　　品</span>';
-$body.='<select class="form-control" id="parts">';
-$rst=selectData(DB_NAME,'select * from parts');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['partsname'].'">'.$rst[$i]['partsname'].' </option>';
-}
-$body.='</select>';
-$body.='</div>';
+////////////////////////////////////////////////////////////
+$body.='<div id="check"></div>';
+////////////////////////////////////////////////////////////
+$body.='<div id="pon"></div>';
+////////////////////////////////////////////////////////////
+$body.='<div id="condition"></div>';
+////////////////////////////////////////////////////////////
+$body.='<div id="response"></div>';
+////////////////////////////////////////////////////////////
+$body.='<div id="emerge"></div>';
+////////////////////////////////////////////////////////////
 
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">部　　位</span>';
-$body.='<select class="form-control" id="item">';
-$rst=selectData(DB_NAME,'select * from item');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['itemname'].'">'.$rst[$i]['itemname'].' </option>';
-}
-$body.='</select>';
-$body.='</div>';
-
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">状　　態</span>';
-$body.='<select class="form-control" id="cond">';
-$rst=selectData(DB_NAME,'select * from cond');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['cond'].'">'.$rst[$i]['cond'].'</option>';
-}
-$body.='</select>';
-$body.='</div>';
-
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">緊急度　</span>';
-$body.='<select class="form-control" id="emergency">';
-$rst=selectData(DB_NAME,'select * from emergency');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['when'].'">'.$rst[$i]['when'].' </option>';
-}
-$body.='</select>';
-$body.='</div>';
-
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">対　　応</span>';
-$body.='<select class="form-control" id="resp">';
-$rst=selectData(DB_NAME,'select * from response');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['res_item'].'">'.$rst[$i]['res_item'].' </option>';
-}
-$body.='</select>';
-$body.='</div>';
-
-$body.='<div class="input-group input-group-sm form-inline">';
-$body.='<span class="input-group-addon">必要性　</span>';
-$body.='<select class="form-control" id="need">';
-$rst=selectData(DB_NAME,'select * from need');
-for($i=0;$i<count($rst);$i++){
-  $body.='<option value="'.$rst[$i]['how'].'">'.$rst[$i]['how'].' </option>';
-}
-$body.='</select>';
-$body.='</div>';
-
+$body.='<div class="clearfix"></div>';
+$body.='<hr>';
 //送信ボタン=========================================
-$body.='<button id="sendbtn" class="btn btn-sm btn-success pull-right">内容確認</button>';
+$body.='<button id="sendbtn" class="btn btn-sm btn-success pull-right">追加</button>';
+////////////////////////////////////////////////////////////
+$body.='<div id="message"></div>';
+////////////////////////////////////////////////////////////
 
-$body.='<div id="ppp"></div>';//出力用
+
+
 $body.='</div>';//container
 $body.='</div>';//
 
 //ヘッダー===========================================
-$header ='<script type="text/javascript" src="index.js"></script>';
+$header ='<script type="text/javascript" src="index2.js"></script>';
 $header.='<style type="text/css">';
 $header.='<!--
   .input-group{
