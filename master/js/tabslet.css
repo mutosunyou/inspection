@@ -152,10 +152,7 @@ PRE {
 	color: white;
 }
 
-.active {
-	background: #a3dbea !important;
-	border-bottom: 4px solid #68a6d6 !important;
-}
+
 
 .active A {
 	color: white !important;

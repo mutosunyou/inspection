@@ -27,6 +27,7 @@ function html($title, $header, $body){
     $cont .= '<script type="text/javascript" src="'.SITE_URL.'master/js/jcalculator.min.js"></script>'."\n";                  //計算機
     $cont .= '<script type="text/javascript" src="'.SITE_URL.'master/js/jquery.keyboard.extension-all.js"></script>'."\n";    //キーボード
     $cont .= '<script type="text/javascript" src="'.SITE_URL.'master/js/jquery.uploadifive.min.js"></script>';                //ファイルアップロード
+    $cont .= '<script type="text/javascript" src="'.SITE_URL.'master/js/toggles.min.js"></script>';                           //トグル
 
     //CSS-------------------------------------------------------------------------------------------------------------------------------------
   //$cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/js/jcalculator.css" >'."\n";                                          //計算機
@@ -41,7 +42,8 @@ function html($title, $header, $body){
     $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/bootstrap/css/redmond/jquery-ui.theme.css" media="all" />'."\n";      //ui
     $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/bootstrap/css/jquery.datetimepicker.css" media="all" />'."\n";        //日付取得
     $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/js/uploadifive.css">';                                                //ファイルアップロード
-    $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/js/tabslet.css">';                                                     //スタイルシート（タブ付属のやつ）
+    $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/js/tabslet.css">';                                                    //スタイルシート（タブ付属のやつ）
+    $cont .= '<link rel="stylesheet" type="text/css" href="'.SITE_URL.'master/js/toggles-full.css" media="all" />'."\n";                            //トグル
 
     $cont .= '<link rel="shortcut icon" href="'.SITE_URL.'master/favicon.ico">'."\n";
     

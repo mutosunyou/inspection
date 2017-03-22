@@ -3,8 +3,10 @@
 session_start();
 require_once('master/prefix.php');
 
+//localのみ============================
 $_SESSION['loginid']=10042;
 $_SESSION['login_name']="武藤　一徳";
+//=======================================
 
 //ログイン処理======================================
 $sql = "SELECT * FROM employee";
@@ -52,10 +54,9 @@ $body.='<div class="collapse navbar-collapse" id="nav-menu-1">';
 
 //左側
 $body.='<ul class="nav navbar-nav">';
-$body.='<li id="listrun" class="bankmenu"><a tabindex="-1">点検報告書作成システム</a></li>';
-$body.='<li id="list" class="active applymenu"><a href="#" tabindex="-1">新規作成</a></li>';
-
-
+$body.='<li id="listrun" class="bankmenu"><a tabindex="-1">コーヒー</a></li>';
+$body.='<li id="list" class="applymenu"><a href="index.php" tabindex="-1">履歴</a></li>';
+$body.='<li id="list" class="active applymenu"><a href="#" tabindex="-1">入会・退会</a></li>';
 $body.='</ul>';
 
 //右側
@@ -73,53 +74,65 @@ $body.='<div id="topspace" style="height:70px;"></div>';
 
 //クラスと変数=====================================
 $body.='<input id="userID" class="hidden" value="'.$_SESSION['loginid'].'">';
+$sql='select * from author where userId='.$_SESSION['loginid'];
+$rst=selectData(DB_NAME,$sql);
+
+if(count($rst)>0){
+  $author=1;
+}else{
+  $author=0;
+}
 
 //本文/////////////////////////////////////////////
 //タイトル=========================================
 $body.='<div class="container-fluid">';
 $body.='<div class="container">';
 $body.='<h2 class="toptitle">';
-$body.='点検結果';
-$body.='</h2><hr />';
+$body.='入会、退会';
+$body.='</h2>';
 
-////////////////////////////////////////////////////////////
-$body.='<div style="float:left;background:silver;">';
-$rst_category=selectData(DB_NAME,'select * from element');
-//$body.='<h5>カテゴリー</h5>';
-$body.='<select id="categ" multiple class="form-control form-inline">';
-for($i=0;$i<count($rst_category);$i++){
-  $body.='<option value="'.$rst_category[$i]['id'].'">'.$rst_category[$i]['content'].'</option>';
+$sql='select userID from member';
+$rst_now=selectData(DB_NAME,$sql);
+$sql='select id from employee where id not in (';
+for($i=0;$i<count($rst_now);$i++){
+  $sql.=$rst_now[$i]['userID'];
+  if($i!=(count($rst_now)-1)){
+    $sql.=',';
+  }
 }
-$body.='</select>';
-$body.='</div>';
+$sql.=') and kairan=1';
+$rst=selectData('master',$sql);
 
-////////////////////////////////////////////////////////////
-$body.='<div id="check"></div>';
-////////////////////////////////////////////////////////////
-$body.='<div id="pon"></div>';
-////////////////////////////////////////////////////////////
-$body.='<div id="condition"></div>';
-////////////////////////////////////////////////////////////
-$body.='<div id="response"></div>';
-////////////////////////////////////////////////////////////
-$body.='<div id="emerge"></div>';
-////////////////////////////////////////////////////////////
+$body.='<p>　　入会、退会を希望される方は<a href="mailto:muto@sunyou.co.jp">企画室</a>までご連絡ください。</p><hr>';
 
-$body.='<div class="clearfix"></div>';
-$body.='<hr>';
-//送信ボタン=========================================
-$body.='<button id="sendbtn" class="btn btn-sm btn-success pull-right">追加</button>';
-////////////////////////////////////////////////////////////
-$body.='<div id="message"></div>';
-////////////////////////////////////////////////////////////
+if($author==1){
+  $body.='<div class="clearfix"></div>';
+  //入会/////////////////////////////////////////////
+  $body.='<span style="float:left;margin-top:5px;">入会希望者：</span>';
+  $body.='<select id="inner" class="form-control" style="width:200px;float:left;">';
+  for($i=0;$i<count($rst);$i++){
+    $body.='<option>'.nameFromUserID($rst[$i]['id']).'</option>';
+  }
+  $body.='</select>';
+  $body.='<button  id="admission" class="btn btn-primary btn-sm" style="margin:0 0 0 20px;">入会</button>';
+  $body.='<hr>';
+  //入会おわり
 
-
-
+  //退会/////////////////////////////////////////////
+  $body.='<span style="float:left;margin-top:5px;">退会希望者：</span>';
+  $body.='<select id="outer" class="form-control" style="width:200px;float:left;">';
+  for($i=0;$i<count($rst_now);$i++){
+    $body.='<option>'.nameFromUserID($rst_now[$i]['userID']).'</option>';
+  }
+  $body.='</select>';
+  $body.='<button id="withdrawal" class="btn btn-danger btn-sm" style="margin:0 0 0 20px;">退会</button>';
+  //退会終わり
+}
 $body.='</div>';//container
 $body.='</div>';//
 
 //ヘッダー===========================================
-$header ='<script type="text/javascript" src="index2.js"></script>';
+$header ='<script type="text/javascript" src="index.js"></script>';
 $header.='<style type="text/css">';
 $header.='<!--
   .input-group{
@@ -129,4 +142,4 @@ $header.='<!--
 $header.='</style>';
 
 //HTML作成===========================================
-echo html('点検',$header, $body);
+echo html('コーヒー会員入会・退会',$header, $body);
