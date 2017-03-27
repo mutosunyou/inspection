@@ -3,8 +3,6 @@
 session_start();
 require_once('master/prefix.php');
 
-$_SESSION['loginid']=10042;
-$_SESSION['login_name']="武藤　一徳";
 
 //ログイン処理======================================
 $sql = "SELECT * FROM employee";
@@ -122,6 +120,7 @@ $body.='<th>点検項目</th>';
 $body.='<th>作業項目</th>';
 $body.='<th>c点検</th>';
 $body.='</tr>';
+
 $body.='<tr>';
 $body.='<th rowspan="5">ラジエーター関係</th>';
 $body.='<td>151</td>';
@@ -130,6 +129,7 @@ $body.='<td>';
 $body.='<select id="151" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
 $body.='</tr>';
+
 $body.='<tr>';
 $body.='<td>152</td>';
 $body.='<td>コアーの掃除、ゴムホース交換</td>';
@@ -137,6 +137,7 @@ $body.='<td>';
 $body.='<select id="152" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
 $body.='</tr>';
+
 $body.='<tr>';
 $body.='<td>153</td>';
 $body.='<td>ファンの羽根取付鋲の緩み点検</td>';
@@ -144,6 +145,7 @@ $body.='<td>';
 $body.='<select id="153" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
 $body.='</tr>';
+
 $body.='<tr>';
 $body.='<td>154</td>';
 $body.='<td>ファンベルト緩み点検</td>';
@@ -151,6 +153,7 @@ $body.='<td>';
 $body.='<select id="154" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
 $body.='</tr>';
+
 $body.='<tr>';
 $body.='<td>155</td>';
 $body.='<td>スパイダー谷底部点検</td>';
@@ -158,6 +161,7 @@ $body.='<td>';
 $body.='<select id="155" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
 $body.='</tr>';
+
 $body.='</table>';
 //$body.='<button id="sendbtn2" class="btn btn-sm btn-success pull-right">出力</button>';
 $body.='<h4>報告内容</h4>';
