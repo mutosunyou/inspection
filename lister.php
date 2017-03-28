@@ -2,10 +2,6 @@
 session_start();
 require_once('master/prefix.php');
 
-//ローカルのみ========================
-$_SESSION['loginid']=10042;
-$_SESSION['login_name']="武藤　一徳";
-//====================================
 
 //回覧メンバーに選ばれている回覧IDを検索する
 $sql='select * from member where available=1';

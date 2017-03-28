@@ -125,23 +125,37 @@ message='';
   //=====================================================================button2
 
   $('.form-control').change(function(){
-      var message2='';
+    var message2='';
     if($('#151').val()==1){
       message2+='冷却水の入替が必要です。<br>';
+    }
+    if($('#151input').val()!=''){
+      message2+=$('#151input').val()+'<br>';
     }
     if($('#152').val()==1){
       message2+='コアーの掃除、ゴムホース交換が必要です。<br>';
     }
+    if($('#152input').val()!=''){
+      message2+=$('#151input').val()+'<br>';
+    }
     if($('#153').val()==1){
       message2+='ファンの羽根取付鋲の交換が必要です。<br>';
+    }
+    if($('#153input').val()!=''){
+      message2+=$('#151input').val()+'<br>';
     }
     if($('#154').val()==1){
       message2+='ファンベルトの交換が必要です。<br>';
     }
+    if($('#154input').val()!=''){
+      message2+=$('#151input').val()+'<br>';
+    }
     if($('#155').val()==1){
       message2+='スパイダーの交換が必要です。<br>';
     }
-
+    if($('#155input').val()!=''){
+      message2+=$('#151input').val()+'<br>';
+    }
 
     $('#message2').html(message2);
 

@@ -1,5 +1,4 @@
 <?php
-//初期==============================================
 session_start();
 require_once('master/prefix.php');
 
@@ -119,6 +118,7 @@ $body.='<th>点検部</th>';
 $body.='<th>点検項目</th>';
 $body.='<th>作業項目</th>';
 $body.='<th>c点検</th>';
+$body.='<th>備考</th>';
 $body.='</tr>';
 
 $body.='<tr>';
@@ -128,6 +128,7 @@ $body.='<td>冷却水入替及び清掃</td>';
 $body.='<td>';
 $body.='<select id="151" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
+$body.='<td><input id="151input" class="form-control form-inline"></input></td>';
 $body.='</tr>';
 
 $body.='<tr>';
@@ -136,6 +137,7 @@ $body.='<td>コアーの掃除、ゴムホース交換</td>';
 $body.='<td>';
 $body.='<select id="152" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
+$body.='<td><input id="152input" class="form-control form-inline"></input></td>';
 $body.='</tr>';
 
 $body.='<tr>';
@@ -144,6 +146,7 @@ $body.='<td>ファンの羽根取付鋲の緩み点検</td>';
 $body.='<td>';
 $body.='<select id="153" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
+$body.='<td><input id="153input" class="form-control form-inline"></input></td>';
 $body.='</tr>';
 
 $body.='<tr>';
@@ -152,6 +155,7 @@ $body.='<td>ファンベルト緩み点検</td>';
 $body.='<td>';
 $body.='<select id="154" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
+$body.='<td><input id="154input" class="form-control form-inline"></input></td>';
 $body.='</tr>';
 
 $body.='<tr>';
@@ -160,6 +164,7 @@ $body.='<td>スパイダー谷底部点検</td>';
 $body.='<td>';
 $body.='<select id="155" class="form-control form-inline" style="width:50px;"><option value="0">○</option><option value="1">×</option></select>';
 $body.='</td>';
+$body.='<td><input id="155input" class="form-control form-inline"></input></td>';
 $body.='</tr>';
 
 $body.='</table>';
